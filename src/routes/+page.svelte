@@ -50,14 +50,12 @@
   async function getRandomWord() {
     const res = await fetch("/api/genword");
     const body = await res.json();
-    console.log(body);
     word = body.split("").map((l: string) => {
       return { letter: l, clicked: false };
     });
   }
 
   async function clicked(letter: string) {
-    console.log(letter);
     let miss = true;
     let win = true;
     for (const l of word) {
