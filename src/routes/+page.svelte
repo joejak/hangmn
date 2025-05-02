@@ -338,8 +338,7 @@
         <div style="display:flex; gap: .25rem; height: 5vh">
           {#each row as cell}
             <button
-              style="width: {(cw * 0.7) /
-                9}px; display:flex; justify-content:center; align-items:center; border:solid thin {tertiary}; border-radius: .25rem; background-color:color( from white srgb r g b / .25 ); opacity: {cell.clicked
+              style="width:5vh; display:flex; justify-content:center; align-items:center; border:solid thin {tertiary}; border-radius: .25rem; background-color:color( from white srgb r g b / .25 ); opacity: {cell.clicked
                 ? '.2'
                 : '1'}"
               onclick={() => {
