@@ -95,13 +95,12 @@
   }
 
   onMount(() => {
-
     cw = window.visualViewport?.width ? window.visualViewport.width : 500;
     ch = window.visualViewport?.height ? window.visualViewport.height : 500;
     Promise.all([getRandomWord(), getColorScheme()]);
-    setTimeout(()=>{
-        loaded = true;
-    }, 4000)
+    setTimeout(() => {
+      loaded = true;
+    }, 4000);
   });
 </script>
 
@@ -110,7 +109,7 @@
   "
 >
   {#if loaded}
-    <div style="width: 80%; max-width: 1000px; margin-top: 10px;">
+    <div style="width: 80%; max-width: 800px; margin-top: 10px; display:flex; justify-content:space-between; align-items:center;">
       <div style="display: flex; gap: 10px; color: {textcolor2}; float: left;">
         <p
           style="font-size: {ch > cw
@@ -128,7 +127,7 @@
         </h1>
       </div>
       <button
-        style="background-color: color(from white srgb r g b / .5 ); border: none; aspect-ratio: 1/1; float: right; border: solid thin black; border-radius: 4rem; display: flex; justify-content: center; align-items: center;"
+        style="background-color: color(from white srgb r g b / .5 ); border: none; aspect-ratio: 1/1; float: right; border: solid thin black; border-radius: 4rem; display: flex; justify-content: center; align-items: center; align-self:center;"
         onclick={() => {
           getColorScheme();
         }}
@@ -242,8 +241,7 @@
     </div>
 
     <div
-      style="display:flex; gap: 1rem; height: {ch *
-        0.05}pt; margin-bottom: 4rem;"
+      style="display:flex; gap: 1rem; height: 28pt; margin-bottom: 2rem;"
     >
       {#if word}
         <button
@@ -313,9 +311,9 @@
         {#each word as letter}
           <div
             style="width: {ch > cw
-              ? (ch / word.length) * 0.2
+              ? (ch / word.length) * 0.15
               : (cw / word.length) *
-                0.2}pt; aspect-ratio:1/1; margin:0px; padding:0px; display:flex; justify-content:center; align-items:center; border: solid  {secondary}; border-radius: .5rem;"
+                0.15}pt; aspect-ratio:1/1; margin:0px; padding:0px; display:flex; justify-content:center; align-items:center; border: solid  {secondary}; border-radius: .25rem;"
           >
             {#if letter.clicked}
               <p
@@ -338,7 +336,10 @@
         <div style="display:flex; gap: .25rem; height: 5vh">
           {#each row as cell}
             <button
-              style="width:5vh; display:flex; justify-content:center; align-items:center; border:solid thin {tertiary}; border-radius: .25rem; background-color:color( from white srgb r g b / .25 ); opacity: {cell.clicked
+              style="width: {(cw * 0.8) / 9 > 40
+                ? 40
+                : (cw * 0.8) /
+                  9}px; display:flex; justify-content:center; align-items:center; border:solid thin {tertiary}; border-radius: .25rem; background-color:color( from white srgb r g b / .25 ); opacity: {cell.clicked
                 ? '.2'
                 : '1'}"
               onclick={() => {
@@ -373,7 +374,11 @@
           ? ch * 0.025
           : cw * 0.025}px;"
       >
-        <g id="layer1" transform="translate(-3.4026869,-28.162284)" style="--animation-time:500ms;">
+        <g
+          id="layer1"
+          transform="translate(-3.4026869,-28.162284)"
+          style="--animation-time:500ms;"
+        >
           <path
             class="loaddraw"
             style="fill:#f4ecf6;fill-opacity:0.504249;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.988406;--animation-sequence:1"
@@ -448,9 +453,7 @@
           />
         </g>
       </svg>
-      <h1 style="text-align:center; color:{textcolor2}">
-        Loading...
-      </h1>
+      <h1 style="text-align:center; color:{textcolor2}">Loading...</h1>
     </div>
   {/if}
 </div>
@@ -527,12 +530,14 @@
     animation: draw-in var(--animation-time) ease-in 0s;
   }
 
-  .loaddraw{
+  .loaddraw {
     stroke-dasharray: 1000 1000;
     stroke-dashoffset: 1000;
     animation: draw-in ease-in-out alternate;
-    animation-duration:calc(var(--animation-time)*calc(8.5 - var(--animation-sequence))); 
-    animation-delay:calc(var(--animation-time)*var(--animation-sequence));
+    animation-duration: calc(
+      var(--animation-time) * calc(8.5 - var(--animation-sequence))
+    );
+    animation-delay: calc(var(--animation-time) * var(--animation-sequence));
   }
   @keyframes draw-in {
     0% {
