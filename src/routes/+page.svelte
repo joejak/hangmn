@@ -4,7 +4,7 @@
   let loaded = $state(false);
   let primary = $state("rgb(0,0,0)");
   let secondary = $state("rgb(0,0,0)");
-  let tertiary = $state("rgb(0,0,0)");
+  let tertiary = $state("rgb(1,1,1)");
   let textcolor = $state("rgb(1,1,1)");
   let textcolor2 = $state("rgb(1,1,1");
   let misses = $state(0);
@@ -97,20 +97,18 @@
   }
 
   onMount(() => {
+
     cw = window.visualViewport?.width ? window.visualViewport.width : 500;
     ch = window.visualViewport?.height ? window.visualViewport.height : 500;
-    Promise.all([getRandomWord(), getColorScheme()])
-      .then(() => {
+    Promise.all([getRandomWord(), getColorScheme()]);
+    setTimeout(()=>{
         loaded = true;
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+    }, 4000)
   });
 </script>
 
 <div
-  style="width: 100vw; height:103vh; margin: 0px; padding: 0px; background-color: {primary}; display:flex; flex-direction:column; gap: 10px; align-items:center; justify-content:center;
+  style="width: 100vw; height:100vh; margin: 0px; padding: 0px; background-color: {primary}; display:flex; flex-direction:column; gap: 10px; align-items:center; justify-content:center;
   "
 >
   {#if loaded}
@@ -277,7 +275,6 @@
             >
               <style type="text/css">
                 .st0 {
-                  
                 }
               </style>
               <g>
@@ -325,8 +322,8 @@
             {#if letter.clicked}
               <p
                 style="color: {textcolor}; font-size: {ch > cw
-                  ? ch * 0.03
-                  : cw * 0.03}pt; margin: 0px; "
+                  ? ch * 0.015
+                  : cw * 0.015}pt; margin: 0px; "
               >
                 {letter.letter}
               </p>
@@ -367,7 +364,97 @@
       {/each}
     </div>
   {:else}
-    <span style="color: white; font-size:{cw / 10}pt;">Loading...</span>
+    <div style="display:flex; flex-direction:column; justify-content:center;">
+      <svg
+        width={ch * 0.5}
+        height={ch * 0.5}
+        viewBox="0 0 211.66666 211.66666"
+        version="1.1"
+        id="svg5"
+        xmlns="http://www.w3.org/2000/svg"
+        style="margin: 0px; padding: 0px; margin-bottom: -{ch > cw
+          ? ch * 0.025
+          : cw * 0.025}px;"
+      >
+        <g id="layer1" transform="translate(-3.4026869,-28.162284)" style="--animation-time:500ms;">
+          <path
+            class="loaddraw"
+            style="fill:#f4ecf6;fill-opacity:0.504249;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.988406;--animation-sequence:1"
+            d="M 162.48299,201.16659 162.89197,33.894177"
+            id="post"
+          />
+          <path
+            class="loaddraw"
+            style="fill:#f4ecf6;fill-opacity:0.504249;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;--animation-sequence:0"
+            d="M 6.0485218,205.05189 205.42578,205.25638"
+            id="base"
+          />
+          <path
+            class="loaddraw"
+            style="fill:#f4ecf6;fill-opacity:0.504249;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;--animation-sequence:2"
+            d="M 162.68748,34.098668 71.894139,34.303157"
+            id="topbar"
+          />
+          <path
+            class="loaddraw"
+            style="fill:#f4ecf6;fill-opacity:0.504249;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1; --animation-sequence:3"
+            d="m 113.40551,34.916625 46.82809,45.60116"
+            id="postsupport"
+          />
+          <path
+            class="loaddraw"
+            style="fill:#000000;fill-opacity:0;stroke:{tertiary};stroke-width:4.48789;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1; --animation-sequence:4"
+            d="m 75.991789,33.475182 v 3.748321 c 0,0 1.29992,-7.218988 3.89977,-6.802507 2.59985,0.41648 0.64997,6.941333 2.38321,6.802507 1.73322,-0.138828 1.51657,-6.386027 3.46646,-6.386027 1.94988,0 5.41635,6.802506 4.33309,6.802506 -1.08328,0 -6.93294,-4.720107 -6.93294,-3.609493 0,1.110612 0.86661,22.351094 0.86661,22.351094"
+            id="rope"
+          />
+
+          <path
+            class="loaddraw"
+            style="fill:#000000;fill-opacity:0;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;--animation-sequence:5"
+            d="m 85.261512,56.079571 c 0,0 18.690358,-0.357004 17.908198,17.737305 C 102.38754,91.911184 88.214824,92.406433 85.130646,92.407138 82.046468,92.407843 63.565967,90.747469 63.620713,75.559643 63.699863,53.601409 84.379407,56.079571 84.379407,56.079571"
+            id="head"
+          />
+
+          <path
+            class="loaddraw"
+            style="fill:#000000;fill-opacity:0;stroke:{tertiary};stroke-width:5.17607;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;--animation-sequence:6"
+            d="m 83.696729,92.320375 1.13805,50.624505"
+            id="body"
+          />
+
+          <path
+            class="loaddraw"
+            style="fill:#000000;fill-opacity:0;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;--animation-sequence:6.25"
+            d="m 87.026369,99.944285 c 0,0 16.563651,6.952645 16.972631,20.039975 0.40897,13.08732 -0.61347,12.47386 -0.61347,12.47386"
+            id="leftarm"
+          />
+
+          <path
+            class="loaddraw"
+            style="fill:#000000;fill-opacity:0;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;--animation-sequence:6.25"
+            d="m 80.687179,100.14878 c 0,0 -20.68055,9.12525 -15.336701,21.47139 l 5.930191,13.7008"
+            id="rightarm"
+          />
+
+          <path
+            class="loaddraw"
+            style="fill:#000000;fill-opacity:0;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;--animation-sequence:7"
+            d="m 85.185959,143.90953 c 0,0 12.67835,19.42651 11.45141,24.74323 -1.22694,5.31673 -1.22694,5.31673 -1.22694,5.31673"
+            id="leftleg"
+          />
+
+          <path
+            class="loaddraw"
+            style="fill:#000000;fill-opacity:0;stroke:{tertiary};stroke-width:5.29167;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1;--animation-sequence:7"
+            d="m 83.550039,145.13646 c -12.26937,10.22448 -14.109773,30.67343 -14.109773,30.67343"
+            id="rightarm"
+          />
+        </g>
+      </svg>
+      <h1 style="text-align:center; color:{textcolor2}">
+        Loading...
+      </h1>
+    </div>
   {/if}
 </div>
 
@@ -442,11 +529,19 @@
     stroke-dasharray: 1000 1000;
     animation: draw-in var(--animation-time) ease-in 0s;
   }
+
+  .loaddraw{
+    stroke-dasharray: 1000 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-in ease-in-out alternate;
+    animation-duration:calc(var(--animation-time)*calc(8.5 - var(--animation-sequence))); 
+    animation-delay:calc(var(--animation-time)*var(--animation-sequence));
+  }
   @keyframes draw-in {
     0% {
       stroke-dashoffset: 1000;
     }
-    50% {
+    1% {
       stroke-dashoffset: 1000;
     }
     100% {
