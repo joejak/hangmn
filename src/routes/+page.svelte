@@ -247,7 +247,7 @@
     >
       {#if word}
         <button
-          style="background-color: color(from white srgb r g b / .5 ); border: none; aspect-ratio: 1/1; float: right; border: solid thin black; border-radius: 4rem; border-color:{tertiary}; display: flex; justify-content: center; align-items: center; align-self: center; height: 62pt; width: 62pt"
+          style="background-color: color(from white srgb r g b / .5 ); border: none; aspect-ratio: 1/1; float: right; border: solid thin black; border-radius: 4rem; border-color:{tertiary}; display: flex; justify-content: center; align-items: center; align-self: center; height: 32pt; width:32pt; padding: 4px;"
           onclick={() => {
             reset();
           }}
@@ -255,8 +255,8 @@
           {#if loadingWord}
             <img
               class="spinnin"
-              width="62pt"
-              height="62pt"
+              width="32pt"
+              height="32pt"
               src="/refresh.svg"
               alt=""
             />
@@ -315,7 +315,7 @@
             style="width: {ch > cw
               ? (ch / word.length) * 0.2
               : (cw / word.length) *
-                0.2}pt;  margin:0px; padding:0px; display:flex; justify-content:center; align-items:center; border: solid  {secondary}; border-radius: .5rem;"
+                0.2}pt; aspect-ratio:1/1; margin:0px; padding:0px; display:flex; justify-content:center; align-items:center; border: solid  {secondary}; border-radius: .5rem;"
           >
             {#if letter.clicked}
               <p
