@@ -34,17 +34,20 @@
 
   async function getColorScheme() {
     loadingColor = true;
-    const res = await fetch("/api/gencolors");
+    try {
+      const res = await fetch("/api/gencolors");
 
-    const body = await res.json();
-    const colors = body.result;
-    primary = `rgb(${colors[0][0]},${colors[0][1]},${colors[0][2]})`;
-    secondary = `rgb(${colors[1][0]},${colors[1][1]},${colors[1][2]})`;
-    tertiary = `rgb(${colors[2][0]},${colors[2][1]},${colors[2][2]})`;
-    textcolor = `rgb(${colors[3][0]},${colors[3][1]},${colors[3][2]})`;
-    textcolor2 = `rgb(${colors[4][0]},${colors[4][1]},${colors[4][2]})`;
-
-    loadingColor = false;
+      const body = await res.json();
+      const colors = body.result;
+      primary = `rgb(${colors[0][0]},${colors[0][1]},${colors[0][2]})`;
+      secondary = `rgb(${colors[1][0]},${colors[1][1]},${colors[1][2]})`;
+      tertiary = `rgb(${colors[2][0]},${colors[2][1]},${colors[2][2]})`;
+      textcolor = `rgb(${colors[3][0]},${colors[3][1]},${colors[3][2]})`;
+      textcolor2 = `rgb(${colors[4][0]},${colors[4][1]},${colors[4][2]})`;
+    } catch (e) {
+    } finally {
+      loadingColor = false;
+    }
   }
 
   async function getRandomWord() {
@@ -109,7 +112,9 @@
   "
 >
   {#if loaded}
-    <div style="width: 80%; max-width: 800px; margin-top: 10px; display:flex; justify-content:space-between; align-items:center;">
+    <div
+      style="width: 80%; max-width: 800px; margin-top: 10px; display:flex; justify-content:space-between; align-items:center;"
+    >
       <div style="display: flex; gap: 10px; color: {textcolor2}; float: left;">
         <p
           style="font-size: {ch > cw
@@ -241,7 +246,9 @@
     </div>
 
     <div
-      style="display:flex; gap: 1rem; height: 28pt; margin-bottom: 2rem;"
+      style="display:flex; gap: 1rem; height: {ch > cw
+        ? ch * 0.015
+        : cw * 0.015}pt; margin-bottom: 2rem;"
     >
       {#if word}
         <button
@@ -310,16 +317,18 @@
         </button>
         {#each word as letter}
           <div
-            style="width: {ch > cw
-              ? (ch / word.length) * 0.15
-              : (cw / word.length) *
-                0.15}pt; aspect-ratio:1/1; margin:0px; padding:0px; display:flex; justify-content:center; align-items:center; border: solid  {secondary}; border-radius: .25rem;"
+            style="width: {(cw * 0.8) / 9 > 42
+              ? 42
+              : (cw * 0.8) / 9}px;  height: {(cw * 0.8) / 9 > 42
+              ? 42
+              : (cw * 0.8) /
+                9}px; aspect-ratio:1/1; margin:0px; padding:0px; display:flex; justify-content:center; align-items:center; border: solid  {secondary}; border-radius: .25rem;"
           >
             {#if letter.clicked}
               <p
                 style="color: {textcolor}; font-size: {ch > cw
-                  ? ch * 0.015
-                  : cw * 0.015}pt; margin: 0px; "
+                  ? ch * 0.012
+                  : cw * 0.012}pt; margin: 0px; "
               >
                 {letter.letter}
               </p>
@@ -336,8 +345,10 @@
         <div style="display:flex; gap: .25rem; height: 5vh">
           {#each row as cell}
             <button
-              style="width: {(cw * 0.8) / 9 > 40
-                ? 40
+              style="width: {(cw * 0.8) / 9 > 42
+                ? 42
+                : (cw * 0.8) / 9}px; height: {(cw * 0.8) / 9 > 42
+                ? 42
                 : (cw * 0.8) /
                   9}px; display:flex; justify-content:center; align-items:center; border:solid thin {tertiary}; border-radius: .25rem; background-color:color( from white srgb r g b / .25 ); opacity: {cell.clicked
                 ? '.2'
@@ -351,8 +362,8 @@
             >
               <p
                 style="color: {textcolor}; font-size: {ch > cw
-                  ? ch * 0.015
-                  : cw * 0.015}pt; margin: 0px; ;"
+                  ? ch * 0.012
+                  : cw * 0.012}pt; margin: 0px; ;"
               >
                 {cell.letter}
               </p>
