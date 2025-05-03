@@ -11,6 +11,7 @@ export const GET: RequestHandler = async () => {
 
   let winner = await Promise.race([response, response2]);
   const body = await winner.json();
+
   let startList = body as unknown as Array<string>;
   startList = startList.filter((term) => {
     return !bannedwords.includes(term.toLowerCase());
