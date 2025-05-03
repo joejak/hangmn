@@ -474,7 +474,27 @@
   style="background-color: {textcolor2}; border-radius: 2rem; padding: 2rem;"
 >
   <div style="display:flex; flex-direction: column; justify-content: center;">
-    <h1 style="color: {primary}; font-size:xxx-large">Game Over!</h1>
+    <h1 style="color: {primary}; font-size:xxx-large; margin:2px;">
+      Game Over!
+    </h1>
+    <p style="font-size:xx-large; margin:2px; color:{primary}">
+      Your word was
+      <a
+        style="color:color(from {primary} srgb r g b / .75)"
+        href="https://google.com/search?q=definition+of+{word
+          .map((w) => {
+            return w.letter;
+          })
+          .join('')}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >{word
+          .map((w) => {
+            return w.letter;
+          })
+          .join("")}</a
+      >
+    </p>
     <button
       onclick={() => {
         location.reload();
