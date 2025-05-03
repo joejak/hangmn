@@ -322,7 +322,7 @@
               : (cw * 0.8) / 10}px;  height: {(cw * 0.8) / 10 > 40
               ? 42
               : (cw * 0.8) /
-                9}px; aspect-ratio:1/1; margin:0px; padding:0px; display:flex; justify-content:center; align-items:center; border: solid  {secondary}; border-radius: .25rem;"
+                9}px; aspect-ratio:1/1; margin:0px; padding:0px; display:flex; justify-content:center; align-items:center; border: solid  {secondary}; border-radius: .25rem; padding-bottom:.5rem;"
           >
             {#if letter.clicked}
               <p
@@ -352,7 +352,7 @@
                 : (cw * 0.8) /
                   9}px; display:flex; justify-content:center; align-items:center; border:solid thin {tertiary}; border-radius: .25rem; background-color:color( from white srgb r g b / .25 ); opacity: {cell.clicked
                 ? '.2'
-                : '1'}"
+                : '1'}; padding-bottom: .65rem; overflow:none;"
               onclick={() => {
                 if (!cell.clicked) {
                   clicked(cell.letter);
