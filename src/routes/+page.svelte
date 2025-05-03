@@ -246,9 +246,9 @@
     </div>
 
     <div
-      style="display:flex; gap: 1rem; height: {ch > cw
+      style="display:flex; height: {ch > cw
         ? ch * 0.015
-        : cw * 0.015}pt; margin-bottom: 2rem;"
+        : cw * 0.015}pt; margin-bottom: 2rem; gap: .5rem; align-items: center; "
     >
       {#if word}
         <button
@@ -317,9 +317,9 @@
         </button>
         {#each word as letter}
           <div
-            style="width: {(cw * 0.8) / 9 > 42
+            style="width: {(cw * 0.8) / 9 > 40
               ? 42
-              : (cw * 0.8) / 9}px;  height: {(cw * 0.8) / 9 > 42
+              : (cw * 0.8) / 10}px;  height: {(cw * 0.8) / 10 > 40
               ? 42
               : (cw * 0.8) /
                 9}px; aspect-ratio:1/1; margin:0px; padding:0px; display:flex; justify-content:center; align-items:center; border: solid  {secondary}; border-radius: .25rem;"
@@ -362,8 +362,8 @@
             >
               <p
                 style="color: {textcolor}; font-size: {ch > cw
-                  ? ch * 0.012
-                  : cw * 0.012}pt; margin: 0px; ;"
+                  ? ch * 0.015
+                  : cw * 0.015}pt; font-weight:bold; margin: 0px;"
               >
                 {cell.letter}
               </p>
